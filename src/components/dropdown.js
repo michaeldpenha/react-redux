@@ -7,27 +7,27 @@ class DropDown extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            region : []
+            region: []
         }
         this.onChange = this.onChange.bind(this);
     }
-    componentWillMount () {
+    componentWillMount() {
         this.setState({
-            region : [{
-                country : 'United States',
-                key : 'us'
-            },{
-                country : 'Poland',
-                key : 'pl'
-            },{
-                country : 'India',
-                key : 'in'
-            },{
-                country : 'Russia',
-                key : 'ru'
-            },{
-                country : 'United Kingdom',
-                key : 'gb'
+            region: [{
+                country: 'United States',
+                key: 'us'
+            }, {
+                country: 'Poland',
+                key: 'pl'
+            }, {
+                country: 'India',
+                key: 'in'
+            }, {
+                country: 'Russia',
+                key: 'ru'
+            }, {
+                country: 'United Kingdom',
+                key: 'gb'
             }]
         });
     }
@@ -38,15 +38,15 @@ class DropDown extends Component {
         console.log(region);
     }
     render() {
-    const listItems = this.state.region.map(data => {
-        return <option onSelect = {() => this.onClick(data)} value={data.key} key ={data.key}>{data.country}</option>
-    })        
-    return (
-      <select name="region-dropdown" onChange = {this.onChange}>
-        {listItems}
-      </select>
-    )
-  }
+        const listItems = this.state.region.map(data => {
+            return <option onSelect={() => this.onClick(data)} value={data.key} key={data.key}>{data.country}</option>
+        })
+        return (
+            <select name="region-dropdown" onChange={this.onChange}>
+                {listItems}
+            </select>
+        )
+    }
 }
 
 DropDown.propTypes = {
@@ -54,6 +54,7 @@ DropDown.propTypes = {
 }
 
 const mapStateToProps = state => ({
-    
+
 })
 export default connect(mapStateToProps, { fetchArticles })(DropDown);
+
