@@ -6,6 +6,12 @@ class List extends Component {
     componentWillMount() {
         this.props.fetchArticles();
     }
+    onClick = (e) => {
+        window.open(
+            e.url,
+            '_blank'
+        );
+    }
     // constructor(props) {
     //     super(props);
     //     this.state = {
@@ -22,12 +28,11 @@ class List extends Component {
     //         .then(data => { this.setState({ news: data.articles }) })
     // }
     render() {
-        console.log(this.props.news)
         const newsList = this.props.news.map((article, i) => {
             return <div key={i} onClick={() => this.onClick(article)}>
                 <h1> {article.title} </h1>
-                <hr />
                 <p> {article.description}</p>
+                <hr />
             </div>
         })
         return (
@@ -38,11 +43,11 @@ class List extends Component {
     }
 }
 List.propTypes = {
-    fetchArticles : PropTypes.func.isRequired,
-    news : PropTypes.array.isRequired
+    fetchArticles: PropTypes.func.isRequired,
+    news: PropTypes.array.isRequired
 }
 
 const mapStateToProps = state => ({
-    news : state.data.items
+    news: state.data.items
 })
-export default connect(mapStateToProps,{ fetchArticles })(List);
+export default connect(mapStateToProps, { fetchArticles })(List);
